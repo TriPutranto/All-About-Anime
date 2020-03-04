@@ -1,0 +1,64 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion Versions.compiledSdk
+
+    defaultConfig {
+        applicationId ApplicationId.id
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Versions.versionCode
+        versionName Release.versionName
+
+        testInstrumentationRunner TestInstrumentation.testRunner
+        buildConfigField "String", "BASE_URL", "\"https://api.jikan.moe/v3/\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    //Android
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation AndroidLibraries.kotlin
+    implementation AndroidLibraries.appCompat
+    implementation AndroidLibraries.coreKtx
+    implementation AndroidLibraries.constraintLayout
+    implementation AndroidLibraries.legacy
+    implementation AndroidLibraries.preference
+
+    //Testing
+    testImplementation Testing.jUnit
+    androidTestImplementation Testing.extJUnit
+    androidTestImplementation Testing.espressoCore
+
+    //Network
+    implementation Network.retrofit
+    implementation Network.converterGson
+    implementation Network.gson
+    implementation Network.okHttp
+
+    //ReactiveX
+    implementation ReactiveX.rxAndroid
+    implementation ReactiveX.rxJava
+    implementation ReactiveX.rxAdapter
+
+    //Design
+    implementation View.materialDesign
+    implementation View.glide
+    annotationProcessor View.glideCompiler
+
+    //Anko
+    implementation AndroidLibraries.anko
+}

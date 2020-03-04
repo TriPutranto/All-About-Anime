@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginEnd="6dp"
+    android:layout_marginBottom="@dimen/activity_vertical_margin">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_anime"
+        android:layout_gravity="center"
+        android:foreground="?selectableItemBackground"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="9dp">
+
+        <ImageView
+            android:id="@+id/iv_characters"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:contentDescription="@string/characters"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@tools:sample/avatars[11]" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cv_anime"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:maxLines="2"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        tools:text="@string/characters" />
+
+</RelativeLayout>
